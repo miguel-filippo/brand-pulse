@@ -50,7 +50,7 @@ Ele foi desenvolvido com base nas necessidades identificadas em entrevistas com 
 
 Você pode visualizar o protótipo publicado aqui:
 
-👉 **[Acesse o BrandPulse via GitHub Pages](https://seu-usuario.github.io/seu-repositorio/)**
+👉 **[Acesse o BrandPulse via GitHub Pages](https://miguel-filippo.github.io/brand-pulse/index.html)**
 
 ---
 
