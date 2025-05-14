@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandPulse Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+            background-color: #F0F0F5;
+            color: #1F2D5A;
+        }
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
+        }
+        .mention-card {
+            transition: all 0.3s ease;
+        }
+        .mention-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .scroll-container {
+            scrollbar-width: thin;
+            scrollbar-color: #D1D5DB #F0F0F5;
+        }
+        .scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .scroll-container::-webkit-scrollbar-track {
+            background: #F0F0F5;
+            border-radius: 10px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background-color: #D1D5DB;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+    <div class="container mx-auto px-4 py-6">
+        <!-- Header -->
+        <header class="mb-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">  <!-- Added flex container for logo and text -->
+                    <img src="Logo.png" alt="BrandPulse Logo" class="h-12 mr-3"> <!-- Logo -->
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button class="p-2 rounded-full bg-white shadow-sm">
+                        <i class="fas fa-bell text-gray-500"></i>
+                    </button>
+                    <div class="w-8 h-8 rounded-full bg-[#1F2D5A] flex items-center justify-center text-white">
+                        <span class="text-sm font-medium">JS</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Line Chart Section -->
+        <section class="bg-white rounded-xl shadow-sm p-4 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold text-[#1F2D5A]">Visão Geral</h2>
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs text-gray-500">7 dias</span>
+                    <button class="p-1 rounded-md bg-[#F0F0F5]">
+                        <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="sentimentChart"></canvas>
+            </div>
+
+            <div class="flex justify-center space-x-6 mt-4">
+                <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#2ED47A] mr-2"></div>
+                    <span class="text-xs text-gray-600">Positivo</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-gray-400 mr-2"></div>
+                    <span class="text-xs text-gray-600">Neutro</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#6C5DD3] mr-2"></div>
+                    <span class="text-xs text-gray-600">Negativo</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Insights Cards -->
+        <section class="mb-6">
+            <h2 class="text-lg font-semibold text-[#1F2D5A] mb-3">Principais insights</h2>
+            <div class="grid grid-cols-1 gap-3">
+                <!-- Insight Card 1 -->
+                <div class="bg-white rounded-xl shadow-sm p-4">
+                    <div class="flex items-start">
+                        <div class="bg-[#6C5DD3] bg-opacity-10 p-2 rounded-lg mr-3">
+                            <i class="fas fa-chart-line text-[#6C5DD3]"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-[#1F2D5A]">Menções negativas subiram 36% nos últimos 3 dias</h3>
+                            <p class="text-sm text-gray-500 mt-1">Principalmente relacionado ao atendimento ao cliente</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight Card 2 -->
+                <div class="bg-white rounded-xl shadow-sm p-4">
+                    <div class="flex items-start">
+                        <div class="bg-[#1F2D5A] bg-opacity-10 p-2 rounded-lg mr-3">
+                            <i class="fas fa-tag text-[#1F2D5A]"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-[#1F2D5A]">Tema mais citado: Atendimento</h3>
+                            <p class="text-sm text-gray-500 mt-1">Apareceu em 42% das menções negativas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight Card 3 -->
+                <div class="bg-white rounded-xl shadow-sm p-4">
+                    <div class="flex items-start">
+                        <div class="bg-[#2ED47A] bg-opacity-10 p-2 rounded-lg mr-3">
+                            <i class="fas fa-chart-pie text-[#2ED47A]"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-[#1F2D5A]">Canal com mais menções: Instagram</h3>
+                            <p class="text-sm text-gray-500 mt-1">Responsável por 58% do volume total</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Mentions List -->
+        <section>
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-semibold text-[#1F2D5A]">Menções recentes</h2>
+                <button class="text-sm text-[#6C5DD3] font-medium">Ver todas</button>
+            </div>
+
+            <div class="scroll-container overflow-x-auto whitespace-nowrap pb-2 -mx-4 px-4">
+                <div class="inline-flex space-x-3">
+                    <!-- Mention Card 1 -->
+                    <div class="mention-card w-64 bg-white rounded-xl shadow-sm p-4 inline-block">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-medium text-[#1F2D5A]">Samanta Alves</h3>
+                                <p class="text-xs text-gray-500">3d atrás</p>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-instagram text-[#E1306C] mr-2"></i>
+                                <div class="w-2 h-2 rounded-full bg-[#2ED47A]"></div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-3 whitespace-normal">"Adorei o novo produto! Superou minhas expectativas em relação à qualidade."</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs px-2 py-1 bg-[#2ED47A] bg-opacity-10 text-[#2ED47A] rounded-full">Positivo</span>
+                            <button class="text-xs text-[#6C5DD3] font-medium">Responder</button>
+                        </div>
+                    </div>
+
+                    <!-- Mention Card 2 -->
+                    <div class="mention-card w-64 bg-white rounded-xl shadow-sm p-4 inline-block">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-medium text-[#1F2D5A]">Carlos Silva</h3>
+                                <p class="text-xs text-gray-500">1d atrás</p>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-twitter text-[#1DA1F2] mr-2"></i>
+                                <div class="w-2 h-2 rounded-full bg-[#6C5DD3]"></div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-3 whitespace-normal">"Horrível o atendimento que recebi hoje. Demoraram 40 minutos para me atender!"</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs px-2 py-1 bg-[#6C5DD3] bg-opacity-10 text-[#6C5DD3] rounded-full">Negativo</span>
+                            <button class="text-xs text-[#6C5DD3] font-medium">Responder</button>
+                        </div>
+                    </div>
+
+                    <!-- Mention Card 3 -->
+                    <div class="mention-card w-64 bg-white rounded-xl shadow-sm p-4 inline-block">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-medium text-[#1F2D5A]">Roberta Gomes</h3>
+                                <p class="text-xs text-gray-500">5h atrás</p>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-google text-[#4285F4] mr-2"></i>
+                                <div class="w-2 h-2 rounded-full bg-gray-400"></div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-3 whitespace-normal">"Comprei o produto mas ainda não testei. Parece bom pela embalagem."</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs px-2 py-1 bg-gray-400 bg-opacity-10 text-gray-600 rounded-full">Neutro</span>
+                            <button class="text-xs text-[#6C5DD3] font-medium">Responder</button>
+                        </div>
+                    </div>
+
+                    <!-- Mention Card 4 -->
+                    <div class="mention-card w-64 bg-white rounded-xl shadow-sm p-4 inline-block">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-medium text-[#1F2D5A]">Lucas Mendes</h3>
+                                <p class="text-xs text-gray-500">2h atrás</p>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-instagram text-[#E1306C] mr-2"></i>
+                                <div class="w-2 h-2 rounded-full bg-[#6C5DD3]"></div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-3 whitespace-normal">"Produto veio com defeito e o SAC não resolveu meu problema. Muito frustrante!"</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs px-2 py-1 bg-[#6C5DD3] bg-opacity-10 text-[#6C5DD3] rounded-full">Negativo</span>
+                            <button class="text-xs text-[#6C5DD3] font-medium">Responder</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg">
+        <div class="flex justify-around items-center py-3">
+            <a href="index.html" class="flex flex-col items-center text-[#6C5DD3]">
+                <i class="fas fa-chart-line mb-1"></i>
+                <span class="text-xs">Dashboard</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-[#6C5DD3] transition-colors">
+                <i class="fas fa-search mb-1"></i>
+                <span class="text-xs">Busca</span>
+            </a>
+            <a href="alertas.html" class="flex flex-col items-center text-gray-400 hover:text-[#6C5DD3] transition-colors">
+                <i class="fas fa-bell mb-1"></i>
+                <span class="text-xs">Alertas</span>
+            </a>
+            <a href="relatorio.html" class="flex flex-col items-center text-gray-400 hover:text-[#6C5DD3] transition-colors">
+                <i class="fas fa-file-alt mb-1"></i>
+                <span class="text-xs">Relatório</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-[#6C5DD3] transition-colors">
+                <i class="fas fa-cog mb-1"></i>
+                <span class="text-xs">Config</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Chart.js initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('sentimentChart').getContext('2d');
+
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                    datasets: [
+                        {
+                            label: 'Positivo',
+                            data: [120, 190, 170, 210, 230, 200, 250],
+                            borderColor: '#2ED47A',
+                            backgroundColor: 'rgba(46, 212, 122, 0.05)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Neutro',
+                            data: [80, 100, 120, 110, 90, 130, 150],
+                            borderColor: '#9CA3AF',
+                            backgroundColor: 'rgba(156, 163, 175, 0.05)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Negativo',
+                            data: [60, 70, 90, 120, 150, 180, 200],
+                            borderColor: '#6C5DD3',
+                            backgroundColor: 'rgba(108, 93, 211, 0.05)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#F0F0F5'
+                            },
+                            ticks: {
+                                stepSize: 100
+                            }
+                        }
+                    },
+                    elements: {
+                        point: {
+                            radius: 0
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

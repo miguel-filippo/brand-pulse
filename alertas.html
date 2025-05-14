@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandPulse - Alertas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+            background-color: #F0F0F5;
+            color: #1F2D5A;
+        }
+        .active-alert-card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .historical-alert-item {
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-sm */
+            padding: 1rem; /* p-4 */
+            margin-bottom: 0.75rem; /* mb-3 */
+            font-size: 0.875rem; /* text-sm */
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+    <div class="container mx-auto px-4 py-6">
+        <!-- Header -->
+        <header class="mb-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center"> <!-- Added flex container for logo and text -->
+                    <img src="Logo.png" alt="BrandPulse Logo" class="h-12 mr-3"> <!-- Logo -->
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button class="p-2 rounded-full bg-white shadow-sm">
+                        <i class="fas fa-bell text-gray-500"></i>
+                    </button>
+                    <div class="w-8 h-8 rounded-full bg-[#1F2D5A] flex items-center justify-center text-white">
+                        <span class="text-sm font-medium">JS</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Active Alert Section -->
+        <section class="active-alert-card">
+            <div class="flex items-start space-x-4">
+                <div class="text-4xl text-red-500">🔥</div> <!-- Urgency Icon -->
+                <div>
+                    <h2 class="text-xl font-semibold text-[#1F2D5A] mb-1">Pico de menções negativas detectado</h2>
+                    <p class="text-lg text-red-600 font-medium mb-2">+36% nas últimas 2 horas</p>
+                    <div class="text-sm text-gray-600 space-y-1">
+                        <p><span class="font-medium">Canal:</span> Instagram</p>
+                        <p><span class="font-medium">Tema predominante:</span> Atendimento</p>
+                        <p class="text-xs text-gray-500 mt-1">Detectado há 15 minutos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
+                <button class="w-full sm:w-auto flex-1 bg-[#6C5DD3] text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-opacity-90 transition duration-150 ease-in-out flex items-center justify-center">
+                    <i class="fas fa-search mr-2"></i>Ver comentários
+                </button>
+                <button class="w-full sm:w-auto flex-1 bg-gray-200 text-[#1F2D5A] px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-gray-300 transition duration-150 ease-in-out flex items-center justify-center">
+                    <i class="fas fa-paperclip mr-2"></i>Exportar relatório
+                </button>
+            </div>
+        </section>
+
+        <!-- Historical Alerts List Section -->
+        <section>
+            <h2 class="text-lg font-semibold text-[#1F2D5A] mb-4">Histórico de alertas</h2>
+            <div class="space-y-3">
+                <div class="historical-alert-item">
+                    <p class="text-gray-700">02/05 – Reclame Aqui – Produto</p>
+                </div>
+                <div class="historical-alert-item">
+                    <p class="text-gray-700">28/04 – Instagram – Atendimento</p>
+                </div>
+                <div class="historical-alert-item">
+                    <p class="text-gray-700">19/04 – Twitter – Logística</p>
+                </div>
+                <!-- Add more historical alerts as needed -->
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg">
+        <div class="flex justify-around items-center py-3">
+            <a href="index.html" class="flex flex-col items-center text-gray-400 hover:text-[#6C5DD3] transition-colors">
+                <i class="fas fa-chart-line mb-1"></i>
+                <span class="text-xs">Dashboard</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-[#6C5DD3] transition-colors"> <!-- Placeholder for Busca -->
+                <i class="fas fa-search mb-1"></i>
+                <span class="text-xs">Busca</span>
+            </a>
+            <a href="alertas.html" class="flex flex-col items-center text-[#6C5DD3]"> <!-- Active link for Alertas -->
+                <i class="fas fa-bell mb-1"></i>
+                <span class="text-xs">Alertas</span>
+            </a>
+            <a href="relatorio.html" class="flex flex-col items-center text-gray-400 hover:text-[#6C5DD3] transition-colors">
+                <i class="fas fa-file-alt mb-1"></i>
+                <span class="text-xs">Relatório</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-[#6C5DD3] transition-colors"> <!-- Placeholder for Config -->
+                <i class="fas fa-cog mb-1"></i>
+                <span class="text-xs">Config</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>
