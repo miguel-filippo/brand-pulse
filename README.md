@@ -16,12 +16,12 @@ Ele foi desenvolvido com base nas necessidades identificadas em entrevistas com 
 
 ## ✨ Funcionalidades
 
-✅ Dashboard com gráfico de sentimentos por dia
-✅ Insights automáticos com base em tendências de dados
-✅ Lista de menções recentes com canais, autores e sentimentos
-✅ Sistema de alerta de crise com histórico de ocorrências
-✅ Relatório estratégico com gráficos e sugestões de ação
-✅ Layout moderno e responsivo com navegação intuitiva
+- ✅ Dashboard com gráfico de sentimentos por dia
+- ✅ Insights automáticos com base em tendências de dados
+- ✅ Lista de menções recentes com canais, autores e sentimentos
+- ✅ Sistema de alerta de crise com histórico de ocorrências
+- ✅ Relatório estratégico com gráficos e sugestões de ação
+- ✅ Layout moderno e responsivo com navegação intuitiva
 
 ---
 
