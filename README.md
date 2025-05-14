@@ -1,6 +1,6 @@
 # 💡 BrandPulse – Monitoramento Inteligente de Percepção de Marca
 
-![BrandPulse Banner](https://via.placeholder.com/1200x400.png?text=BrandPulse+Dashboard) <!-- Substitua por um banner real se quiser -->
+![BrandPulse Banner](https://github.com/miguel-filippo/brand-pulse/blob/main/Logo.png)
 
 > Uma solução visual e estratégica para análise de comentários online sobre marcas.
 > Desenvolvido como parte do projeto da disciplina **SSC0532 – Requisitos de Software (ICMC/USP)**.
